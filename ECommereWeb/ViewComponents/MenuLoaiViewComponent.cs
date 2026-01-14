@@ -16,7 +16,7 @@ namespace ECommereWeb.ViewComponents
                 MaLoai = lo.MaLoai,
                 TenLoai = lo.TenLoai,
                 SoLuong = lo.HangHoas.Count
-            });
+            }).OrderBy(p => p.TenLoai);
             return View(data); //default view name is "Default"
         }
     }
