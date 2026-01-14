@@ -12,7 +12,6 @@ namespace ECommereWeb.Controllers
     public class HangHoasController : Controller
     {
         private readonly Hshop2023Context _context;
-
         public HangHoasController(Hshop2023Context context)
         {
             _context = context;
@@ -89,7 +88,7 @@ namespace ECommereWeb.Controllers
             return View(hangHoa);
         }
 
-        // POST: HangHoas/Edit/5
+        // POST: HangHoas/Edit/555
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
