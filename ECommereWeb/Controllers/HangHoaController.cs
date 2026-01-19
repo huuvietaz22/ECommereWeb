@@ -29,5 +29,25 @@ namespace ECommereWeb.Controllers
             });
             return View(result);
         }
+
+        public IActionResult Search(String? query)
+        {
+            var hangHoas = db.HangHoas.AsQueryable();
+
+            if (query != null)
+            {
+                hangHoas = hangHoas.Where(p => p.TenHh.Contains(query));
+            }
+            var result = hangHoas.Select(p => new HangHoaVM
+            {
+                MaHh = p.MaHh,
+                TenHh = p.TenHh,
+                DonGia = p.DonGia ?? 0,
+                Hinh = p.Hinh ?? "",
+                MoTaNgan = p.MoTaDonVi ?? "",
+                TenLoai = p.MaLoaiNavigation.TenLoai
+            });
+            return View(result);
+        }
     }
 }
