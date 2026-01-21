@@ -61,6 +61,18 @@ namespace ECommereWeb.Controllers
                 TempData["ErrorMessage"] = $"Không tìm thấy hàng hóa {id}.";
                 return Redirect("/404");
             }
+            var resutl = new ChiTietHangHoaVM
+            {
+                MaHh = Data.MaHh,
+                TenHh = Data.TenHh,
+                DonGia = Data.DonGia ?? 0,
+                ChiTiet = Data.MoTa ?? String.Empty,
+                Hinh = Data.Hinh ?? String.Empty,
+                MoTaNgan = Data.MoTaDonVi ?? String.Empty,
+                TenLoai = Data.MaLoaiNavigation.TenLoai,
+                SoLuongTon = 10,
+                DiemDanhGia = 5,
+            };
             return View(Data);
         }
     }
