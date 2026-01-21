@@ -50,5 +50,17 @@ namespace ECommereWeb.Controllers
             HttpContext.Session.Set(CART_KEY, gioHang);
             return RedirectToAction("Index");
         }
+
+        public IActionResult RemoveCart(int id)
+        {
+            var gioHang = Cart;
+            var item = gioHang.SingleOrDefault(p => p.MaHh == id);
+            if (item != null)
+            {
+                gioHang.Remove(item);
+                HttpContext.Session.Set(CART_KEY, gioHang);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
