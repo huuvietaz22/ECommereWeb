@@ -1,6 +1,7 @@
 ﻿using ECommereWeb.Data;
 using ECommereWeb.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommereWeb.Controllers
 {
@@ -48,6 +49,19 @@ namespace ECommereWeb.Controllers
                 TenLoai = p.MaLoaiNavigation.TenLoai
             });
             return View(result);
+        }
+
+        public IActionResult Detail(int id)
+        {
+            var Data = db.HangHoas
+                .Include(p => p.MaLoaiNavigation)
+                .SingleOrDefault(p => p.MaHh == id);
+            if (Data == null)
+            {
+                TempData["ErrorMessage"] = $"Không tìm thấy hàng hóa {id}.";
+                return Redirect("/404");
+            }
+            return View(Data);
         }
     }
 }
