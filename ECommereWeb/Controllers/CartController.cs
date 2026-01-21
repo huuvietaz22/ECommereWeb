@@ -18,7 +18,7 @@ namespace ECommereWeb.Controllers
         public List<CartItem> Cart => HttpContext.Session.Get<List<CartItem>>(CART_KEY) ?? new List<CartItem>();
         public IActionResult Index()
         {
-            return View(Cart);
+            return View(Cart);//truyền giỏ hàng vào view
         }
 
         public IActionResult AddtoCart(int id, int quantity = 1)
