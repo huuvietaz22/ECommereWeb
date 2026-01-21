@@ -73,7 +73,7 @@ namespace ECommereWeb.Controllers
                 SoLuongTon = 10,
                 DiemDanhGia = 5,
             };
-            return View(Data);
+            return View(resutl);
         }
     }
 }
